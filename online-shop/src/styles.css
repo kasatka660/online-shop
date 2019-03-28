@@ -1,0 +1,24 @@
+body {
+  background-color: ghostwhite;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.container-fluid-header,
+.container-fluid-footer {
+  padding-right: 0;
+  padding-left: 0;
+  background-color: cornflowerblue;
+}
+
+.container-header,
+.container-footer {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.container-main {
+  padding-top: 110px;
+  padding-bottom: 110px;
+}

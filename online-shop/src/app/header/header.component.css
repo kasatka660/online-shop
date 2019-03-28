@@ -1,0 +1,17 @@
+nav {
+  text-align: center;
+}
+
+.navbar-expand-lg {
+  justify-content: center;
+}
+
+header nav li a.nav-link {
+  color: ghostwhite;
+  margin: 20px;
+}
+
+
+header nav li {
+  display: inline-block;
+}
