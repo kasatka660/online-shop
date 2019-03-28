@@ -1,0 +1,48 @@
+body {
+    background-color: ghostwhite;
+}
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+.container-fluid-header,
+.container-fluid-footer {
+    padding-right: 0;
+    padding-left: 0;
+    background-color: cornflowerblue;
+}
+
+.container-header,
+.container-footer {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.container-main {
+    padding-top: 110px;
+    padding-bottom: 110px;
+}
+
+
+nav {
+    text-align: center;
+}
+
+.navbar-expand-lg {
+    justify-content: center;
+}
+
+header nav li a.nav-link {
+    color: ghostwhite;
+    margin: 20px;
+}
+
+
+header nav li {
+    display: inline-block;
+}
+
+footer {
+    min-height: 200px;
+    background-color: cornflowerblue;
+}
