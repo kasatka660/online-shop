@@ -1,13 +1,18 @@
 body {
   background-color: ghostwhite;
+  margin-bottom: 200px;
+}
+
+.wrapper {
+  height: 100%;
 }
 
 .container {
   max-width: 1024px;
   margin: 0 auto;
 }
-.container-fluid-header,
-.container-fluid-footer {
+header,
+footer {
   padding-right: 0;
   padding-left: 0;
   background-color: cornflowerblue;

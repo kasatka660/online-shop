@@ -1,3 +1,7 @@
+header {
+  width: 100%;
+}
+
 nav {
   text-align: center;
 }
@@ -6,12 +10,16 @@ nav {
   justify-content: center;
 }
 
-header nav li a.nav-link {
+nav li a.nav-link {
   color: ghostwhite;
   margin: 20px;
 }
 
 
-header nav li {
+nav li {
   display: inline-block;
+}
+
+nav li a.nav-link:hover {
+  color: lightslategrey;
 }
