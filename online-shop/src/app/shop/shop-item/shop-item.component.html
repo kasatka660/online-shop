@@ -1,3 +1,19 @@
-<p>
-  shop-item works!
-</p>
+<div *ngIf="currentShopItem">
+  <div class="row">
+    <div class="col-6">
+      <img [src]="currentShopItem.imgSrc" class="card-img-top" alt="shop item">
+    </div>
+    <div class="'col-6">
+      <div class="shop-item-info">
+        <h3 class="shop-item-name">{{currentShopItem.name}}</h3>
+        <p class="shop-item-description">{{currentShopItem.description}}</p>
+        <span class="shop-item-price">${{currentShopItem.price}}</span>
+        <button class="add">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

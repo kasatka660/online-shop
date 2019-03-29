@@ -15,11 +15,25 @@ nav li a.nav-link {
   margin: 20px;
 }
 
-
 nav li {
   display: inline-block;
+  margin: 0 20px;
 }
 
 nav li a.nav-link:hover {
   color: lightslategrey;
 }
+
+.shop-cart {
+  background-image: url('../../assets/images/cart.png');
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-right: 10px;
+
+}
+
+.shop-cart a {
+  margin-top: 10px;
+}
+

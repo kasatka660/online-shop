@@ -1,0 +1,32 @@
+img {
+  max-width: 250px;
+  display: block;
+}
+
+.shop-item-info {
+  padding: 30px;
+}
+
+.shop-item-description {
+
+}
+
+.shop-item-name {
+  font-weight: bold;
+  color: dimgray;
+  margin-bottom: 30px;
+}
+
+.shop-item-price {
+  color: lightslategrey;
+  font-size: 18px;
+  display: block;
+  margin-top: 30px;
+}
+
+button.add {
+  margin: 30px auto;
+  padding: 10px;
+  background-color: cornflowerblue;
+  border: none;
+}

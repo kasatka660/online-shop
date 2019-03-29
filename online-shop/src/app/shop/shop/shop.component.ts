@@ -8,16 +8,19 @@ import {ShopItem} from "../../shop-item";
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
-  shopItems: ShopItem[] = [];
-  numberOfRows: number;
+  shopItems = [];
+  arrayOfItems: ShopItem[];
   constructor(private shopService: ShopService) { }
 
   ngOnInit() {
     this.shopService.getShopItems()
       .subscribe(items => {
-        this.shopItems = items;
-        this.numberOfRows = Math.ceil(this.shopItems.length /4);
-        console.log(this.numberOfRows);
+        this.arrayOfItems = items;
+        let k=4;
+        for (let i = 0; i < this.arrayOfItems.length; i += k) {
+          this.shopItems.push({ items: this.arrayOfItems.slice(i, i + k) });
+        }
+        console.log(this.shopItems);
       });
   }
 }

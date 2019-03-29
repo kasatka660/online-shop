@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule} from "@angular/router";
 import { HomeComponent } from "./home/home.component";
+import {CartComponent} from "./cart/cart.component";
 
 @NgModule({
   declarations: [],
@@ -10,6 +11,7 @@ import { HomeComponent } from "./home/home.component";
     RouterModule.forRoot([
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'home', component: HomeComponent},
+      {path: 'my-cart', component: CartComponent},
     ])
   ],
   exports: [ RouterModule ]

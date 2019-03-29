@@ -15,4 +15,9 @@ export class ShopService {
   getShopItems(): Observable<ShopItem[]> {
     return this.http.get<ShopItem[]>(this.shopItemsUrl);
   }
+
+  getShopItem(id: number): Observable<ShopItem> {
+    const url = `${this.shopItemsUrl}/${id}`;
+    return this.http.get<ShopItem>(url)
+  }
 }

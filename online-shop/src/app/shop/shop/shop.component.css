@@ -1,10 +1,10 @@
 .card {
   padding: 20px;
+  height: 300px;
 }
 
 .card img {
   max-width: 100px;
-  margin: auto;
 }
 
 .card h5 {
@@ -18,3 +18,6 @@
   text-align: center;
 }
 
+.card a {
+  color: dimgray;
+}
