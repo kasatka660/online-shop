@@ -13,14 +13,13 @@ const httpOptions = {
 })
 
 export class SigningService {
-  private usersInfoUrl = 'api/usersInfo';  // URL to web api
+  private usersUrl = 'api/users';  // URL to web api
   constructor( private http: HttpClient ) { }
 
   createUser(user: User) {
-    return this.http.post<User>(this.usersInfoUrl, user, httpOptions)
+    return this.http.post<User>(this.usersUrl, user, httpOptions)
       .pipe(
         tap((newUser: User) => console.log(newUser))
       );
   }
 }
-

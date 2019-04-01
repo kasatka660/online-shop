@@ -18,7 +18,13 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 9, name: 'Item number four', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-3.jpg", price: 100, inStock: 10},
       { id: 10, name: 'Item number five', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-4.jpg", price: 120, inStock: 100},
     ];
-    const usersInfo = [];
-    return { shopItems, usersInfo }
+    const users = [];
+    return { shopItems, users }
   }
+
+  genId(users): number {
+    return users.length > 0 ? Math.max(...users.map(user => user.id)) + 1 : 1;
+  }
+
+
 }

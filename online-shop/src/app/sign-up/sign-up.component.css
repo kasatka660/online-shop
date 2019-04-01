@@ -1,3 +1,11 @@
 .form-group {
   max-width: 800px;
 }
+
+input.ng-valid {
+  border-bottom: 2px solid mediumseagreen;
+}
+
+input.ng-invalid {
+  border-bottom: 2px solid red;
+}
