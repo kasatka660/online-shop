@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { ShopModule } from './shop/shop.module';
 import { FooterComponent } from './footer/footer.component';
 import { CartComponent } from './cart/cart.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { CartComponent } from './cart/cart.component';
     HomeComponent,
     FooterComponent,
     CartComponent,
+    SignInComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,

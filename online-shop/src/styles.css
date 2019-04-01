@@ -44,3 +44,7 @@ h5 {
 h3 {
   font-size: 20px;
 }
+
+button.btn {
+  background-color: cornflowerblue;
+}

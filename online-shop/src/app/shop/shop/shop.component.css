@@ -18,6 +18,10 @@
   text-align: center;
 }
 
-.card a {
+a {
   color: dimgray;
+}
+
+a:hover {
+  text-decoration: none;
 }

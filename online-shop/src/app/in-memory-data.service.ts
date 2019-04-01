@@ -17,7 +17,8 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 8, name: 'Item number three', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-2.jpg", price: 25, inStock: 5},
       { id: 9, name: 'Item number four', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-3.jpg", price: 100, inStock: 10},
       { id: 10, name: 'Item number five', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-4.jpg", price: 120, inStock: 100},
-    ]
-    return { shopItems }
+    ];
+    const usersInfo = [];
+    return { shopItems, usersInfo }
   }
 }

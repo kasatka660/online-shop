@@ -33,7 +33,12 @@ nav li a.nav-link:hover {
 
 }
 
-.shop-cart a {
-  margin-top: 10px;
+
+ .navbar li.nav-item.sign a {
+  display: inline-block;
+  margin: 20px 0;
 }
 
+.navbar li.nav-item.sign {
+  margin-left: 40px;
+}

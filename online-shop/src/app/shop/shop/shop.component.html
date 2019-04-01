@@ -1,15 +1,13 @@
  <div *ngFor="let row of shopItems" class="row my-4" >
   <div  *ngFor="let shopItem of row.items" class="col-xs-12 col-md-3">
-    <div class="card" [id]="shopItem.id">
-      <img [src]='shopItem.imgSrc' class="card-img-top" alt="shop item">
-      <div class="card-body">
-        <h5 class="card-title">
-          <a routerLink="/shop-item/{{shopItem.id}}">
-            {{shopItem.name}}
-          </a>
-        </h5>
-        <p class="card-text">${{shopItem.price}}</p>
+    <a routerLink="/shop-item/{{shopItem.id}}">
+      <div class="card" [id]="shopItem.id">
+        <img [src]='shopItem.imgSrc' class="card-img-top" alt="shop item">
+        <div class="card-body">
+          <h5 class="card-title">{{shopItem.name}}</h5>
+          <p class="card-text">${{shopItem.price}}</p>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
  </div>
