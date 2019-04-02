@@ -20,7 +20,7 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
     const users = [
       { id: 1, email: 'lenach241@gmail.com', password: '1234567'},
-      { id: 2, email: 'lena@gmail.com', password: '12345678'},
+      { id: 2, email: 'test@test.com', password: 'test123'},
     ];
     return { shopItems, users }
   }
