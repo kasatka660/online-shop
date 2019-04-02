@@ -14,7 +14,6 @@ export class SignInComponent implements OnInit {
                 private signingService: SigningService) { }
 
   signInForm: FormGroup;
-  users;
 
   ngOnInit() {
     this.signInForm =  this.fb.group({
@@ -26,8 +25,12 @@ export class SignInComponent implements OnInit {
   onSubmit(form) {
     console.log(form.value);
     this.signingService.checkUser( {email: form.value.email, password: form.value.password} as User )
-      .subscribe()
+      .subscribe( result => {
+          if ( result == true ) {
+            window.location.href = 'shop';
+          } else {
+            window.location.href = 'sign-in';
+          }
+      });
   }
-
-
 }
