@@ -1,5 +1,6 @@
 .form-group {
-  max-width: 800px;
+  min-width: 200px;
+  max-width: 400px;
 }
 
 input.ng-valid {

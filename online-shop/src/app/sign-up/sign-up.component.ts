@@ -14,7 +14,7 @@ export class SignUpComponent implements OnInit {
                 private signingService: SigningService) { }
 
   signUpForm: FormGroup;
-
+  users;
   ngOnInit() {
     this.signUpForm =  this.fb.group({
       email: ['', [Validators.required, Validators.email] ],
@@ -27,13 +27,12 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit(form) {
-    console.log(form.value);
     this.signingService.createUser( {email: form.value.email, password: form.value.password} as User )
-      .subscribe( user => () => {
-
+      .subscribe( result => {
+        console.log(result);
+        window.location.href = 'shop';
       })
   }
-
 
 }
 

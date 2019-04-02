@@ -18,7 +18,10 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 9, name: 'Item number four', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-3.jpg", price: 100, inStock: 10},
       { id: 10, name: 'Item number five', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-4.jpg", price: 120, inStock: 100},
     ];
-    const users = [];
+    const users = [
+      { id: 1, email: 'lenach241@gmail.com', password: '1234567'},
+      { id: 2, email: 'lena@gmail.com', password: '12345678'},
+    ];
     return { shopItems, users }
   }
 
