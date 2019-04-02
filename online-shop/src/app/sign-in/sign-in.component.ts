@@ -14,7 +14,7 @@ export class SignInComponent implements OnInit {
                 private signingService: SigningService) { }
 
   signInForm: FormGroup;
-
+  ;
   ngOnInit() {
     this.signInForm =  this.fb.group({
         email: ['', [Validators.required, Validators.email] ],
@@ -24,6 +24,8 @@ export class SignInComponent implements OnInit {
 
   onSubmit(form) {
     console.log(form.value);
+    let res = this.signingService.checkUser( {email: form.value.email, password: form.value.password} as User );
+    console.log(res)
   }
 
 

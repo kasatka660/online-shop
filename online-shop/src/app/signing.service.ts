@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { User } from "./user";
-import {tap} from "rxjs/operators";
 
 
 const httpOptions = {
@@ -14,12 +13,24 @@ const httpOptions = {
 
 export class SigningService {
   private usersUrl = 'api/users';  // URL to web api
+  allUsers: User[];
   constructor( private http: HttpClient ) { }
 
   createUser(user: User) {
-    return this.http.post<User>(this.usersUrl, user, httpOptions)
-      .pipe(
-        tap((newUser: User) => console.log(newUser))
-      );
+    return this.http.post<User>(this.usersUrl, user, httpOptions);
+  }
+
+  checkUser(userToSearch: User) {
+    this.http.get<User[]>(this.usersUrl)
+      .subscribe( result => {
+        this.allUsers = result;
+        let userFound =  this.allUsers.find( user => user.email === userToSearch.email );
+        console.log(userFound.password === userToSearch.password);
+        let res = userFound.password === userToSearch.password;
+        console.log(res);
+        return res;
+      });
   }
 }
+
+
