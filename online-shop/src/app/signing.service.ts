@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { User } from "./user";
-
+import { map, find } from "rxjs/operators";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,7 +13,7 @@ const httpOptions = {
 
 export class SigningService {
   private usersUrl = 'api/users';  // URL to web api
-  allUsers: User[];
+ // allUsers: User[];
   constructor( private http: HttpClient ) { }
 
   createUser(user: User) {
@@ -21,16 +21,27 @@ export class SigningService {
   }
 
   checkUser(userToSearch: User) {
-    this.http.get<User[]>(this.usersUrl)
-      .subscribe( result => {
-        this.allUsers = result;
-        let userFound =  this.allUsers.find( user => user.email === userToSearch.email );
-        console.log(userFound.password === userToSearch.password);
-        let res = userFound.password === userToSearch.password;
-        console.log(res);
-        return res;
-      });
+    return this.http.get<User[]>(this.usersUrl)
+      .pipe(
+        map( item => console.log(item))
+      )
   }
 }
 
 
+/*
+checkUser(userToSearch: User) {
+    return this.http.get<User[]>(this.usersUrl)
+      .pipe( result => {
+        this.allUsers = result;
+        let userFound =  this.allUsers.find( user => user.email === userToSearch.email );
+        if ( typeof userFound == 'undefined' ) {
+          return false
+        } else {
+          return userFound.password === userToSearch.password;
+        }
+      });
+  }
+
+
+ */
