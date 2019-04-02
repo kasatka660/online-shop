@@ -10,6 +10,8 @@ import { ShopItem } from "../../shop-item";
 })
 export class ShopItemComponent implements OnInit {
   currentShopItem: ShopItem;
+  quantity = 1;
+
   constructor( private shopService: ShopService,
                private currentRoute: ActivatedRoute, ) { }
 
@@ -17,13 +19,27 @@ export class ShopItemComponent implements OnInit {
       this.getShopItem();
     }
 
-
     getShopItem() {
       const id = +this.currentRoute.snapshot.paramMap.get('id');
-      console.log(id);
       this.shopService.getShopItem(id)
         .subscribe(item => {
           this.currentShopItem = item;
           console.log(this.currentShopItem) });
     }
+
+  addToCart() {
+    localStorage.setItem( `${this.currentShopItem.id}`, `${this.quantity}`);
+  }
+
+  increase() {
+    this.quantity +=1;
+  }
+  decrease() {
+      if (this.quantity === 0) {
+        return;
+      } else {
+        this.quantity -=1;
+      }
+
+  }
 }

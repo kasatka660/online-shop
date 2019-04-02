@@ -1,0 +1,12 @@
+.card img {
+  max-width: 100px;
+  margin-left: 40px;
+}
+
+a {
+  color: dimgray;
+}
+
+a:hover {
+  text-decoration: none;
+}

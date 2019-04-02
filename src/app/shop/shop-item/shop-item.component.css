@@ -30,3 +30,10 @@ button.add {
   background-color: cornflowerblue;
   border: none;
 }
+
+.minus,
+.plus {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 10px;
+}

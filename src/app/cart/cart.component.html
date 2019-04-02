@@ -1,3 +1,33 @@
-<p>
-  cart works!
-</p>
+<div class="row">
+
+  <div class="col-2"></div>
+
+  <div *ngIf="selectedItemsData.length > 0 " class="col-8">
+
+      <div *ngFor="let item of selectedItemsData " [id]="item.id" class="card my-3">
+        <a routerLink="/shop-item/{{item.id}}">
+          <div class="row my-3">
+            <div class="col-md-4">
+              <img [src]='item.imgSrc' class="card-img" alt="shop item">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"> {{item.name}} </h5>
+                <p class="card-text"><strong>${{item.price}}</strong></p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+  </div>
+
+  <div *ngIf="selectedItemsData.length === 0 " class="col-8">
+    <div class="col-8">
+     <h5> Your cart is empty</h5>
+    </div>
+  </div>
+
+  <div class="col-2"></div>
+
+</div>

@@ -8,7 +8,11 @@
         <h3 class="shop-item-name">{{currentShopItem.name}}</h3>
         <p class="shop-item-description">{{currentShopItem.description}}</p>
         <span class="shop-item-price">${{currentShopItem.price}}</span>
-        <button class="add">Add to Cart</button>
+        <button class="minus" (click)="decrease()" >-</button>
+        <span> {{quantity}} </span>
+        <button  class="plus" (click)="increase()" >+</button>
+        <button class="btn add"
+                 (click)="addToCart()" >Add to Cart</button>
       </div>
     </div>
   </div>
