@@ -23,8 +23,9 @@
   </div>
 
   <div *ngIf="selectedItemsData.length === 0 " class="col-8">
-    <div class="col-8">
-     <h5> Your cart is empty</h5>
+    <div class="col-8 empty-cart">
+     <h5> Your cart is empty.</h5>
+     <a routerLink="/shop"> <button class="btn">Start shopping</button> </a>
     </div>
   </div>
 

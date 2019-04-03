@@ -10,3 +10,12 @@ a {
 a:hover {
   text-decoration: none;
 }
+
+h5 {
+  margin-bottom: 40px;
+}
+
+.empty-cart {
+  text-align: center;
+  margin: 0 auto;
+}

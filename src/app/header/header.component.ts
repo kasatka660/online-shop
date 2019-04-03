@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
 
   constructor( private signingService: SigningService ) { }
 
-  isAuthorised: Boolean;
+  isAuthorised: boolean;
 
   ngOnInit() {
     this.isAuthorised = this.signingService.isAuthorised();

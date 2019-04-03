@@ -15,6 +15,7 @@ export class SignOutComponent implements OnInit {
   }
 
   signOut() {
+    localStorage.clear();
     this.signingService.signOut();
     window.location.href = 'home';
   }

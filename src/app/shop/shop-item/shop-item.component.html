@@ -7,12 +7,19 @@
       <div class="shop-item-info">
         <h3 class="shop-item-name">{{currentShopItem.name}}</h3>
         <p class="shop-item-description">{{currentShopItem.description}}</p>
-        <span class="shop-item-price">${{currentShopItem.price}}</span>
-        <button class="minus" (click)="decrease()" >-</button>
-        <span> {{quantity}} </span>
-        <button  class="plus" (click)="increase()" >+</button>
-        <button class="btn add"
-                 (click)="addToCart()" >Add to Cart</button>
+
+          <div class="shop-item-price">${{currentShopItem.price}}</div>
+          <button class="minus" (click)="decrease()"  [disabled]="buttonsDisabling" >-</button>
+          <span> {{quantity}} </span>
+          <button  class="plus" (click)="increase()"  [disabled]="buttonsDisabling" >+</button>
+          <button class="btn add"
+                  (click)="addToCart()"  [disabled]="buttonsDisabling" >Add to Cart</button>
+
+          <p *ngIf="buttonsDisabling" class="alert alert-danger">To add item to cart
+            <a routerLink="/sign-in" > Sign in </a> or
+            <a routerLink="/sign-up" >  Sign up </a>
+          </p>
+
       </div>
     </div>
   </div>

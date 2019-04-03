@@ -5,10 +5,8 @@ img {
 
 .shop-item-info {
   padding: 30px;
-}
-
-.shop-item-description {
-
+  margin: 0 auto;
+  text-align: center;
 }
 
 .shop-item-name {
@@ -20,20 +18,22 @@ img {
 .shop-item-price {
   color: lightslategrey;
   font-size: 18px;
-  display: block;
-  margin-top: 30px;
+  margin: 30px auto;
 }
 
 button.add {
-  margin: 30px auto;
+  margin: 10px auto;
   padding: 10px;
   background-color: cornflowerblue;
   border: none;
+  display: block;
 }
 
 .minus,
 .plus {
   display: inline-block;
-  padding: 5px 10px;
+  width: 30px;
+  height: 30px;
   margin: 10px;
 }
+
