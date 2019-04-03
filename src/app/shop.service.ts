@@ -11,6 +11,7 @@ import {map} from "rxjs/operators";
 })
 export class ShopService {
 
+  count: number = 0;
   private shopItemsUrl = 'api/shopItems';  // URL to web api
   @Output() cartChange: EventEmitter<any> = new EventEmitter();
 
@@ -43,7 +44,9 @@ export class ShopService {
   }
 
   changeCart() {
-    this.cartChange.emit()
+    this.count += 1;
+    console.log(this.count);
+    this.cartChange.emit(this.count)
   }
   getEmittedValue() {
     return this.cartChange;

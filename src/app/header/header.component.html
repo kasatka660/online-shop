@@ -10,7 +10,7 @@
           </li>
           <li *ngIf = 'isAuthorised'  class="nav-item shop-cart">
             <a class="nav-link" routerLink="/my-cart">My Cart
-              <span class="badge danger badge-light">  </span>
+              <span class="badge danger badge-light"> {{numbOfItemsInCart}}  </span>
             </a>
           </li>
           <li  *ngIf = '!isAuthorised' class="nav-item sign">

@@ -13,12 +13,13 @@ export class HeaderComponent implements OnInit {
                private shopService: ShopService) { }
 
   isAuthorised: boolean;
-  numbOfItemsInCart: number;
+  numbOfItemsInCart: number = 0;
 
   ngOnInit() {
     this.isAuthorised = this.signingService.isAuthorised();
     this.shopService.getEmittedValue()
-      .subscribe( result => this.numbOfItemsInCart = result )
+      .subscribe( result => console.log(result) );
+    console.log(this.numbOfItemsInCart)
   }
 
 
