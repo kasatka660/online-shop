@@ -17,7 +17,7 @@ export class ShopItemComponent implements OnInit {
 
   constructor( private shopService: ShopService,
                private currentRoute: ActivatedRoute,
-               private signingService: SigningService) { }
+               private signingService: SigningService,) { }
 
   ngOnInit(): void {
     this.getShopItem();
@@ -35,6 +35,7 @@ export class ShopItemComponent implements OnInit {
 
   addToCart() {
     localStorage.setItem( `${this.currentShopItem.id}`, `${this.quantity}`);
+    this.shopService.changeCart();
   }
 
   increase() {

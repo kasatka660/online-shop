@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SigningService} from "../signing.service";
+import {ShopService} from "../shop.service";
 
 @Component({
   selector: 'app-header',
@@ -8,12 +9,17 @@ import {SigningService} from "../signing.service";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( private signingService: SigningService ) { }
+  constructor( private signingService: SigningService,
+               private shopService: ShopService) { }
 
   isAuthorised: boolean;
+  numbOfItemsInCart: number;
 
   ngOnInit() {
     this.isAuthorised = this.signingService.isAuthorised();
+    this.shopService.getEmittedValue()
+      .subscribe( result => this.numbOfItemsInCart = result )
   }
+
 
 }

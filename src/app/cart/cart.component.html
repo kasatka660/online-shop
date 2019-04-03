@@ -13,12 +13,21 @@
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title"> {{item.name}} </h5>
-                <p class="card-text"><strong>${{item.price}}</strong></p>
+                <p class="card-text">
+                  <span> ${{item.price}} </span>
+                  <span>x</span>
+                  <span> {{item.quantity}} = </span>
+                  <span> <strong> ${{item.totalValue}} </strong> </span>
+                </p>
               </div>
             </div>
           </div>
         </a>
       </div>
+      <div class="total">
+        <h3> Total amount : $ {{total}}  </h3>
+      </div>
+
 
   </div>
 

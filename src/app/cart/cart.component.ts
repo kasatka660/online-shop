@@ -14,6 +14,7 @@ export class CartComponent implements OnInit {
   selectedItems = {};
   selectedItemsKeys: string[] ;
   selectedItemsData: CartItem[] = [] ;
+  total = 0;
 
   ngOnInit() {
     this.selectedItems = {...localStorage};
@@ -21,11 +22,15 @@ export class CartComponent implements OnInit {
 
     this.shopService.getItemsByKeys(this.selectedItemsKeys)
       .subscribe( result => {
-        this.selectedItemsData = result.map( item => {
-          item.quantity = this.selectedItems[item.id]
-          return item;
+          const currentResult = result.map( item => {
+            const newItem  = Object.assign( {quantity: +this.selectedItems[item.id]}, item )
+            newItem.inStock = newItem.inStock - this.selectedItems[newItem.id];
+            newItem.totalValue = newItem.price * newItem.quantity;
+            return newItem;
         });
-        console.log(this.selectedItemsData)
+          console.log(currentResult);
+          this.selectedItemsData = currentResult;
+          this.selectedItemsData.map( item => this.total += item.totalValue )
       })
   }
 

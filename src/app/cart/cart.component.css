@@ -19,3 +19,16 @@ h5 {
   text-align: center;
   margin: 0 auto;
 }
+
+.card-text span {
+  font-size: 20px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.total {
+  border-top: 2px solid dimgray;
+  margin: 100px auto;
+  padding: 20px;
+  color: dimgray;
+}

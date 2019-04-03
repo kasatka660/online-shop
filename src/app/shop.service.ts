@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Output, EventEmitter} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { ShopItem } from "./shop-item";
 import { CartItem } from "./cart-item"
 import {map} from "rxjs/operators";
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ import {map} from "rxjs/operators";
 export class ShopService {
 
   private shopItemsUrl = 'api/shopItems';  // URL to web api
+  @Output() cartChange: EventEmitter<any> = new EventEmitter();
+
 
   constructor(private http: HttpClient) { }
 
@@ -38,5 +41,15 @@ export class ShopService {
         })
       )
   }
+
+  changeCart() {
+    this.cartChange.emit()
+  }
+  getEmittedValue() {
+    return this.cartChange;
+  }
+
+
+
 }
 
