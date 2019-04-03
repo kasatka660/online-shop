@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ShopService} from "../shop.service";
-import {ShopItem} from "../shop-item";
+import {CartItem} from "../cart-item";
 
 @Component({
   selector: 'app-cart',
@@ -11,11 +11,14 @@ export class CartComponent implements OnInit {
 
   constructor( private shopService: ShopService ) { }
 
-  selectedItems = {...localStorage}
-  selectedItemsKeys: string[]  =Object.keys(this.selectedItems);
-  selectedItemsData: ShopItem[] = [] ;
+  selectedItems = {};
+  selectedItemsKeys: string[] ;
+  selectedItemsData: CartItem[] = [] ;
 
   ngOnInit() {
+    this.selectedItems = {...localStorage};
+    this.selectedItemsKeys = Object.keys(this.selectedItems);
+
     this.shopService.getItemsByKeys(this.selectedItemsKeys)
       .subscribe( result => {
         this.selectedItemsData = result.map( item => {

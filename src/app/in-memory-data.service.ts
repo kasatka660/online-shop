@@ -12,11 +12,11 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 3, name: 'Item number three', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-3.jpg", price: 25, inStock: 5},
       { id: 4, name: 'Item number four', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-4.jpg", price: 100, inStock: 10},
       { id: 5, name: 'Item number five', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-5.jpg", price: 120, inStock: 100},
-      { id: 6, name: 'Item number one', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-6.jpg", price: 10, inStock: 10},
-      { id: 7, name: 'Item number two', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-1.jpg", price: 20, inStock: 2},
-      { id: 8, name: 'Item number three', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-2.jpg", price: 25, inStock: 5},
-      { id: 9, name: 'Item number four', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-3.jpg", price: 100, inStock: 10},
-      { id: 10, name: 'Item number five', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-4.jpg", price: 120, inStock: 100},
+      { id: 6, name: 'Item number six', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-6.jpg", price: 10, inStock: 10},
+      { id: 7, name: 'Item number seven', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-1.jpg", price: 20, inStock: 2},
+      { id: 8, name: 'Item number eight', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-2.jpg", price: 25, inStock: 5},
+      { id: 9, name: 'Item number nine', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-3.jpg", price: 100, inStock: 10},
+      { id: 10, name: 'Item number ten', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-4.jpg", price: 120, inStock: 100},
     ];
     const users = [
       { id: 1, email: 'lenach241@gmail.com', password: '1234567'},

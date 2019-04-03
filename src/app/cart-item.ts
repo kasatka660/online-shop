@@ -1,7 +1,7 @@
-export class ShopItem {
+export class CartItem {
   id: number;
   name: string;
   description: string;
   price: number;
-  inStock: number;
+  quantity: number;
 }

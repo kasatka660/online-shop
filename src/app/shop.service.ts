@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ShopItem } from "./shop-item";
+import { CartItem } from "./cart-item"
 import {map} from "rxjs/operators";
 
 @Injectable({
@@ -27,13 +28,12 @@ export class ShopService {
       .pipe(
         map(item => {
           const selectedItems = [];
-         // console.log(ids)
           for ( let i=0; i < ids.length; i++) {
             let newItem = item.find( itemInfo => itemInfo.id == ids[i] );
-          //  console.log(newItem);
+           console.log(newItem);
             selectedItems.push(newItem)
           }
-         // console.log(selectedItems)
+         console.log(selectedItems);
           return selectedItems;
         })
       )
