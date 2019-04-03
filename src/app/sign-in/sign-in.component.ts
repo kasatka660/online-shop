@@ -18,16 +18,17 @@ export class SignInComponent implements OnInit {
   ngOnInit() {
     this.signInForm =  this.fb.group({
         email: ['', [Validators.required, Validators.email] ],
-        password: ['', [Validators.required]],
+        password: ['', [Validators.required, Validators.minLength(7)]],
       });
   }
 
   onSubmit(form) {
-    console.log(form.value);
     this.signingService.checkUser( {email: form.value.email, password: form.value.password} as User )
       .subscribe( result => {
           if ( result == true ) {
             window.location.href = 'shop';
+          //  console.log(this.signingService.isAuthorised())
+            this.signingService.isAuthorised();
           } else {
             window.location.href = 'sign-in';
           }

@@ -10,20 +10,19 @@ import {ShopItem} from "../shop-item";
 export class CartComponent implements OnInit {
 
   constructor( private shopService: ShopService ) { }
-  itemsKeys: string[];
-  selectedItemsData: ShopItem[];
 
-  getCartInfo() {
-     const items = {...localStorage};
-     this.itemsKeys = Object.keys(items);
-     //console.log(this.itemsKeys)
-  }
+  selectedItems = {...localStorage}
+  selectedItemsKeys: string[]  =Object.keys(this.selectedItems);
+  selectedItemsData: ShopItem[] = [] ;
 
   ngOnInit() {
-    this.getCartInfo();
-    this.shopService.getItemsByKeys(this.itemsKeys)
+    this.shopService.getItemsByKeys(this.selectedItemsKeys)
       .subscribe( result => {
-        this.selectedItemsData = result;
+        this.selectedItemsData = result.map( item => {
+          item.quantity = this.selectedItems[item.id]
+          return item;
+        });
+        console.log(this.selectedItemsData)
       })
   }
 

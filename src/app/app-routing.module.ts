@@ -5,6 +5,7 @@ import { HomeComponent } from "./home/home.component";
 import {CartComponent} from "./cart/cart.component";
 import {SignInComponent} from "./sign-in/sign-in.component";
 import {SignUpComponent} from "./sign-up/sign-up.component";
+import { SignOutComponent } from "./sign-out/sign-out.component";
 
 @NgModule({
   declarations: [],
@@ -16,6 +17,7 @@ import {SignUpComponent} from "./sign-up/sign-up.component";
       {path: 'my-cart', component: CartComponent},
       {path: 'sign-in', component: SignInComponent},
       {path: 'sign-up', component: SignUpComponent},
+      {path: 'sign-out', component: SignOutComponent},
     ])
   ],
   exports: [ RouterModule ]

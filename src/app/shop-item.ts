@@ -4,4 +4,5 @@ export class ShopItem {
   description: string;
   price: number;
   inStock: number;
+  quantity: number;
 }

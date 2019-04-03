@@ -30,7 +30,7 @@ export class SignUpComponent implements OnInit {
     this.signingService.createUser( {email: form.value.email, password: form.value.password} as User )
       .subscribe( result => {
         console.log(result);
-        window.location.href = 'shop';
+        window.location.href = 'sign-in';
       })
   }
 

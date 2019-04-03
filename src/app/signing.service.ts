@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { User } from "./user";
-import { map, find } from "rxjs/operators";
+import { map } from "rxjs/operators";
+import { CookieService } from "ngx-cookie-service";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,8 +14,8 @@ const httpOptions = {
 
 export class SigningService {
   private usersUrl = 'api/users';  // URL to web api
- // allUsers: User[];
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient,
+               private cookieService: CookieService ) { }
 
   createUser(user: User) {
     return this.http.post<User>(this.usersUrl, user, httpOptions);
@@ -25,16 +26,23 @@ export class SigningService {
       .pipe(
         map( item => {
           const userFound = item.find( user => user.email === userToSearch.email);
-          //console.log(userFound)
           if ( typeof userFound == 'undefined' ) {
-           // console.log(typeof userFound);
             return false
           } else {
-           // console.log(userFound.password === userToSearch.password)
+            this.cookieService.set( 'userName', `${userFound.email}` );
             return userFound.password === userToSearch.password;
           }
         })
       )
   }
+
+  isAuthorised() {
+    return this.cookieService.get('userName').length > 0;
+  }
+
+  signOut() {
+    this.cookieService.set('userName', '');
+  }
+
 }
 

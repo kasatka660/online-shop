@@ -24,7 +24,7 @@ export class ShopItemComponent implements OnInit {
       this.shopService.getShopItem(id)
         .subscribe(item => {
           this.currentShopItem = item;
-          console.log(this.currentShopItem) });
+        });
     }
 
   addToCart() {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SigningService} from "../signing.service";
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor( private signingService: SigningService ) { }
+
+  isAuthorised: Boolean;
 
   ngOnInit() {
+    this.isAuthorised = this.signingService.isAuthorised();
   }
 
 }
