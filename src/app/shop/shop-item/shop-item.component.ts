@@ -34,7 +34,8 @@ export class ShopItemComponent implements OnInit {
   }
 
   addToCart() {
-    localStorage.setItem( `${this.currentShopItem.id}`, `${this.quantity}`);
+    const prevQuantity = localStorage.getItem(`${this.currentShopItem.id}`);
+    localStorage.setItem( `${this.currentShopItem.id}`, `${parseInt(prevQuantity) + this.quantity}`);
     this.shopService.changeCart();
   }
 
