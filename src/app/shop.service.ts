@@ -1,7 +1,7 @@
-import {Injectable, Output, EventEmitter} from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Observable } from 'rxjs';
-import { ShopItem } from "./models/shop-item.model";
+import {EventEmitter, Injectable, Output} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from 'rxjs';
+import {ShopItem} from "./models/shop-item.model";
 import {map} from "rxjs/operators";
 
 
@@ -28,12 +28,7 @@ export class ShopService {
     return this.getShopItems()
       .pipe(
         map(item => {
-          const selectedItems = [];
-          for ( let i=0; i < ids.length; i++) {
-            let newItem = item.find( itemInfo => itemInfo.id == ids[i] );
-            selectedItems.push(newItem)
-          }
-          return selectedItems;
+          return item.filter(itemInfo => ids.includes(itemInfo.id.toString()));
         })
       )
   }

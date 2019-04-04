@@ -6,5 +6,4 @@ export class CartItem {
   price: number;
   quantity: number;
   inStock: number;
-  totalValue: number;
 }

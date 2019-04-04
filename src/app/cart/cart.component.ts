@@ -25,11 +25,10 @@ export class CartComponent implements OnInit {
           const currentResult = result.map( item => {
             const newItem  = Object.assign( {quantity: +this.selectedItems[item.id]}, item )
             newItem.inStock = newItem.inStock - this.selectedItems[newItem.id];
-            newItem.totalValue = newItem.price * newItem.quantity;
             return newItem;
         });
           this.selectedItemsData = currentResult;
-          this.selectedItemsData.map( item => this.total += item.totalValue )
+          this.selectedItemsData.map( item => this.total += item.price*item.quantity )
       })
   }
 
