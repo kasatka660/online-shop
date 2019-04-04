@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { SignOutComponent } from './sign-out/sign-out.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,7 @@ import { SignOutComponent } from './sign-out/sign-out.component';
     SignInComponent,
     SignUpComponent,
     SignOutComponent,
-  ],
+],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -39,9 +40,10 @@ import { SignOutComponent } from './sign-out/sign-out.component';
       InMemoryDataService, { dataEncapsulation: false }
     ),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

@@ -5,7 +5,7 @@ import {ShopComponent} from "./shop/shop.component";
 import {ShopItemComponent} from "./shop-item/shop-item.component";
 
 import {ShopRoutingModule} from "./shop-routing.module";
-
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -14,7 +14,8 @@ import {ShopRoutingModule} from "./shop-routing.module";
   ],
   imports: [
     BrowserModule,
-    ShopRoutingModule
+    ShopRoutingModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: []

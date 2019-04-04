@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {SigningService} from "../signing.service";
 import {User} from "../user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-in',
@@ -11,7 +12,8 @@ import {User} from "../user";
 export class SignInComponent implements OnInit {
 
   constructor ( private fb: FormBuilder,
-                private signingService: SigningService) { }
+                private signingService: SigningService,
+                private router: Router) { }
 
   signInForm: FormGroup;
 
@@ -26,11 +28,10 @@ export class SignInComponent implements OnInit {
     this.signingService.checkUser( {email: form.value.email, password: form.value.password} as User )
       .subscribe( result => {
           if ( result == true ) {
-            window.location.href = 'shop';
-          //  console.log(this.signingService.isAuthorised())
+            this.router.navigate(['/shop']);;
             this.signingService.isAuthorised();
           } else {
-            window.location.href = 'sign-in';
+            this.router.navigate(['/sign-in']);;
           }
       });
   }

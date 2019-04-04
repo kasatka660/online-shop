@@ -8,6 +8,7 @@ import { ShopService } from "../../shop.service";
 })
 export class ShopComponent implements OnInit {
   shopItems = [];
+  p: number = 1;
   constructor(private shopService: ShopService) { }
 
   ngOnInit() {

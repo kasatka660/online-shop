@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { PasswordValidation } from "../password-validation";
 import { SigningService } from "../signing.service";
 import {User} from "../user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +12,8 @@ import {User} from "../user";
 })
 export class SignUpComponent implements OnInit {
   constructor ( private fb: FormBuilder,
-                private signingService: SigningService) { }
+                private signingService: SigningService,
+                private router: Router) { }
 
   signUpForm: FormGroup;
   users;
@@ -30,7 +32,7 @@ export class SignUpComponent implements OnInit {
     this.signingService.createUser( {email: form.value.email, password: form.value.password} as User )
       .subscribe( result => {
         console.log(result);
-        window.location.href = 'sign-in';
+        this.router.navigate(['/sign-in']);;
       })
   }
 
