@@ -18,11 +18,11 @@ export class SignOutComponent implements OnInit {
 
   signOut() {
     localStorage.clear();
-    //this.signingService.signOut();
-   // this.router.navigate(['/home']);
+    this.signingService.signOut();
+    this.router.navigate(['/home']);
     this.signingService.changeAuthorization();
   }
   goBack() {
-    window.location.href = 'shop';
+    this.router.navigate(['/shop']);
   }
 }

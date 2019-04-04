@@ -23,10 +23,7 @@ export class HeaderComponent implements OnInit {
     this.shopService.changeCart();
 
     this.signingService.getEmittedValue()
-      .subscribe( result => {
-        this.isAuthorised = result;
-        console.log(this.isAuthorised)
-      });
+      .subscribe( result => this.isAuthorised = result );
   }
 }
 

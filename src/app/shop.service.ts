@@ -42,7 +42,7 @@ export class ShopService {
 
   changeCart() {
     const selectedItems = {...localStorage};
-    const numberOfItems = Object.values(selectedItems).reduce( (prev, cur) =>  parseInt(prev) + parseInt(cur)  );
+    const numberOfItems = Object.values(selectedItems).reduce( (prev, cur) =>  parseInt(prev) + parseInt(cur), 0  );
     this.cartChange.emit(numberOfItems)
   }
   getEmittedValue() {
