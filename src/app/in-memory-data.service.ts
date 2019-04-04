@@ -17,6 +17,16 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 8, name: 'Item number eight', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-2.jpg", price: 25, inStock: 5},
       { id: 9, name: 'Item number nine', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-3.jpg", price: 100, inStock: 10},
       { id: 10, name: 'Item number ten', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-4.jpg", price: 120, inStock: 100},
+      { id: 11, name: 'Item number eleven', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-1.jpg",  price: 10, inStock: 10},
+      { id: 12, name: 'Item number twelve', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-2.jpg", price: 20, inStock: 2},
+      { id: 13, name: 'Item number thirteen', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-3.jpg", price: 25, inStock: 5},
+      { id: 14, name: 'Item number fourteen', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-4.jpg", price: 100, inStock: 10},
+      { id: 15, name: 'Item number fifteen', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-5.jpg", price: 120, inStock: 100},
+      { id: 16, name: 'Item number sixteen', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-6.jpg", price: 10, inStock: 10},
+      { id: 17, name: 'Item number seventeen', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-1.jpg", price: 20, inStock: 2},
+      { id: 18, name: 'Item number eighteen', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-2.jpg", price: 25, inStock: 5},
+      { id: 19, name: 'Item number nineteen', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-3.jpg", price: 100, inStock: 10},
+      { id: 20, name: 'Item number twenty', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-4.jpg", price: 120, inStock: 100},
     ];
     const users = [
       { id: 1, email: 'lenach241@gmail.com', password: '1234567'},

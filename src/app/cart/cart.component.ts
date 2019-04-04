@@ -34,10 +34,10 @@ export class CartComponent implements OnInit {
   }
 
   removeFromCart(id) {
-    delete this.selectedItems[id];
     localStorage.removeItem(id);
-    this.selectedItems = {...localStorage};
     this.shopService.updateCart();
+    const index = this.selectedItemsData.findIndex( item => item.id = id );
+    this.selectedItemsData.splice(index, 1);
   }
 
 }
