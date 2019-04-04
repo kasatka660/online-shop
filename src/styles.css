@@ -39,6 +39,13 @@ img {
   margin: auto;
 }
 
+h1 {
+  font-size: 30px;
+  color: dimgray;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
 h5 {
   font-size: 16px;
 }

@@ -1,4 +1,3 @@
-.home {
-  background-image: url("../../assets/images/bgr.png");
-  background-size: cover;
+p {
+  padding: 20px;
 }

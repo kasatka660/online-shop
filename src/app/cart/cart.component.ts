@@ -28,10 +28,16 @@ export class CartComponent implements OnInit {
             newItem.totalValue = newItem.price * newItem.quantity;
             return newItem;
         });
-          console.log(currentResult);
           this.selectedItemsData = currentResult;
           this.selectedItemsData.map( item => this.total += item.totalValue )
       })
+  }
+
+  removeFromCart(id) {
+    delete this.selectedItems[id];
+    localStorage.removeItem(id);
+    this.selectedItems = {...localStorage};
+    this.shopService.updateCart();
   }
 
 }
