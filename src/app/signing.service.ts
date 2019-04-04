@@ -1,6 +1,6 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import { HttpClient, HttpHeaders} from "@angular/common/http";
-import { User } from "./user";
+import { User } from "./user.model";
 import { map } from "rxjs/operators";
 import { CookieService } from "ngx-cookie-service";
 
@@ -49,7 +49,7 @@ export class SigningService {
   }
 
   changeAuthorization() {
-    this.authChange.emit(false);
+    this.authChange.emit(this.isAuthorised());
   }
 
   getEmittedValue() {

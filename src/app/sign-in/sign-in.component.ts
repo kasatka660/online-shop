@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {SigningService} from "../signing.service";
-import {User} from "../user";
+import {User} from "../user.model";
 import {Router} from "@angular/router";
 
 @Component({
@@ -27,9 +27,9 @@ export class SignInComponent implements OnInit {
   onSubmit(form) {
     this.signingService.checkUser( {email: form.value.email, password: form.value.password} as User )
       .subscribe( result => {
-          if ( result == true ) {
-            this.router.navigate(['/shop']);;
-            this.signingService.isAuthorised();
+          if ( result ) {
+            this.router.navigate(['/shop']);
+            this.signingService.changeAuthorization();
           } else {
             this.router.navigate(['/sign-in']);;
           }

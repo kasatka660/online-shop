@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { PasswordValidation } from "../password-validation";
 import { SigningService } from "../signing.service";
-import {User} from "../user";
+import {User} from "../user.model";
 import {Router} from "@angular/router";
 
 @Component({
