@@ -1,8 +1,10 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import { HttpClient, HttpHeaders} from "@angular/common/http";
-import { User } from "./user.model";
+import { User } from "./models/user.model";
 import { map } from "rxjs/operators";
 import { CookieService } from "ngx-cookie-service";
+import {ShopService} from "./shop.service";
+import {Router} from "@angular/router";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,7 +21,9 @@ export class SigningService {
   @Output() authChange: EventEmitter<any> = new EventEmitter();
 
   constructor( private http: HttpClient,
-               private cookieService: CookieService ) { }
+               private cookieService: CookieService,
+               private shopService: ShopService,
+               private router: Router) { }
 
   createUser(user: User) {
     return this.http.post<User>(this.usersUrl, user, httpOptions);
@@ -45,7 +49,11 @@ export class SigningService {
   }
 
   signOut() {
+    localStorage.clear();
     this.cookieService.set('userName', '');
+    this.changeAuthorization();
+    this.shopService.updateCart();
+    this.router.navigate(['/home']);
   }
 
   changeAuthorization() {

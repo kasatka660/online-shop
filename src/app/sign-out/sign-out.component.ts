@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SigningService} from "../signing.service";
 import {Router} from "@angular/router";
+import {ShopService} from "../shop.service";
 
 @Component({
   selector: 'app-sign-out',
@@ -10,6 +11,7 @@ import {Router} from "@angular/router";
 export class SignOutComponent implements OnInit {
 
   constructor( private signingService: SigningService,
+               private shopService: ShopService,
                private router: Router) { }
 
   ngOnInit() {
@@ -17,10 +19,7 @@ export class SignOutComponent implements OnInit {
   }
 
   signOut() {
-    localStorage.clear();
     this.signingService.signOut();
-    this.router.navigate(['/home']);
-    this.signingService.changeAuthorization();
   }
   goBack() {
     this.router.navigate(['/shop']);

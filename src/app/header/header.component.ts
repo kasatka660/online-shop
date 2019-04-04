@@ -19,7 +19,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.isAuthorised = this.signingService.isAuthorised();
     this.shopService.getEmittedValue()
-      .subscribe( result => this.numbOfItemsInCart = result);
+      .subscribe( result => {
+        this.numbOfItemsInCart = result;
+      console.log(this.numbOfItemsInCart)});
     this.shopService.updateCart();
 
     this.signingService.getEmittedValue()
