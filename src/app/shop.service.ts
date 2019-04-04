@@ -33,10 +33,8 @@ export class ShopService {
           const selectedItems = [];
           for ( let i=0; i < ids.length; i++) {
             let newItem = item.find( itemInfo => itemInfo.id == ids[i] );
-           console.log(newItem);
             selectedItems.push(newItem)
           }
-         console.log(selectedItems);
           return selectedItems;
         })
       )
@@ -44,14 +42,12 @@ export class ShopService {
 
   changeCart() {
     const selectedItems = {...localStorage};
-    const numberOfItems = Object.values(selectedItems).reduce( (prev, cur) => parseInt(prev) + parseInt(cur) );
+    const numberOfItems = Object.values(selectedItems).reduce( (prev, cur) =>  parseInt(prev) + parseInt(cur)  );
     this.cartChange.emit(numberOfItems)
   }
   getEmittedValue() {
     return this.cartChange;
   }
-
-
 
 }
 

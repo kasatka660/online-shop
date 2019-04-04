@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { User } from "./user";
 import { map } from "rxjs/operators";
@@ -13,7 +13,11 @@ const httpOptions = {
 })
 
 export class SigningService {
+
   private usersUrl = 'api/users';  // URL to web api
+
+  @Output() authChange: EventEmitter<any> = new EventEmitter();
+
   constructor( private http: HttpClient,
                private cookieService: CookieService ) { }
 
@@ -42,6 +46,14 @@ export class SigningService {
 
   signOut() {
     this.cookieService.set('userName', '');
+  }
+
+  changeAuthorization() {
+    this.authChange.emit(false);
+  }
+
+  getEmittedValue() {
+    return this.authChange;
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SigningService} from "../signing.service";
 import {ShopService} from "../shop.service";
+import {subscribeOn} from "rxjs/operators";
 
 @Component({
   selector: 'app-header',
@@ -18,8 +19,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.isAuthorised = this.signingService.isAuthorised();
     this.shopService.getEmittedValue()
-      .subscribe( result => this.numbOfItemsInCart = result );
+      .subscribe( result => this.numbOfItemsInCart = result);
     this.shopService.changeCart();
+
+    this.signingService.getEmittedValue()
+      .subscribe( result => {
+        this.isAuthorised = result;
+        console.log(this.isAuthorised)
+      });
   }
 }
 
