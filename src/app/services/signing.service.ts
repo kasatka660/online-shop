@@ -38,7 +38,7 @@ export class SigningService {
         map( item => {
           const userFound = item.find( user => user.email === userToSearch.email);
           if ( typeof userFound == 'undefined' ) {
-            return false
+            return false;
           } else {
             this.cookieService.set( 'userName', `${userFound.email}` );
             return userFound.password === userToSearch.password;
@@ -53,12 +53,12 @@ export class SigningService {
   }
 
   isAuthorised(): boolean {
-    return this.cookieService.get('userName').length > 0;
+    return this.cookieService.check('userName');
   }
 
   signOut() {
     localStorage.clear();
-    this.cookieService.set('userName', '');
+    this.cookieService.delete('userName', '/');
     this.changeAuthorization();
     this.shopService.updateCart();
     this.router.navigate(['/home']);

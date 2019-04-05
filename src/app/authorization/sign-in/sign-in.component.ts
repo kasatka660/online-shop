@@ -36,7 +36,7 @@ export class SignInComponent implements OnInit, OnDestroy {
             this.router.navigate(['/shop']);
             this.signingService.changeAuthorization();
           } else {
-            this.router.navigate(['/sign-in']);;
+            this.router.navigate(['/sign-in']);
           }
       })
     );
