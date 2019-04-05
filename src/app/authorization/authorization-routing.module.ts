@@ -16,6 +16,7 @@ import { SignInComponent } from "./sign-in/sign-in.component";
       { path: 'sign-up', component: SignUpComponent },
       { path: 'sign-out', component: SignOutComponent }
     ])
-  ]
+  ],
+  exports: [ RouterModule ]
 })
 export class AuthorizationRoutingModule { }

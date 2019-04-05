@@ -4,6 +4,7 @@ import {SignUpComponent} from "./sign-up/sign-up.component";
 import {SignOutComponent} from "./sign-out/sign-out.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
+import {AuthorizationRoutingModule} from "./authorization-routing.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {BrowserModule} from "@angular/platform-browser";
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    BrowserModule
+    BrowserModule,
+    AuthorizationRoutingModule,
   ]
 })
 export class AuthorizationModule { }
