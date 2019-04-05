@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import {Router} from "@angular/router";
 
-import { PasswordValidation } from "../../utils/password-validation";
+import { PasswordMatch } from "../../utils/password-match";
+
 
 import { SigningService } from "../../services/signing.service";
 
@@ -20,7 +21,7 @@ export class SignUpComponent implements OnInit {
                 private router: Router) { }
 
   signUpForm: FormGroup;
-  users;
+
   ngOnInit() {
     this.signUpForm =  this.fb.group({
       email: ['', [Validators.required, Validators.email] ],
@@ -28,7 +29,7 @@ export class SignUpComponent implements OnInit {
       confirmPassword:   ['', Validators.required],
     },
       {
-        validator: PasswordValidation.MatchPassword // your validation method
+        validator: PasswordMatch( 'password', 'confirmPassword' )
       });
   }
 
