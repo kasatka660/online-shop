@@ -1,9 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
-import { PasswordValidation } from "../password-validation";
-import { SigningService } from "../signing.service";
-import {User} from "../models/user.model";
 import {Router} from "@angular/router";
+
+import { PasswordValidation } from "../../utils/password-validation";
+
+import { SigningService } from "../../services/signing.service";
+
+import {User} from "../../models/user.model";
+
 
 @Component({
   selector: 'app-sign-up',
@@ -32,7 +36,7 @@ export class SignUpComponent implements OnInit {
     this.signingService.createUser( {email: form.value.email, password: form.value.password} as User )
       .subscribe( result => {
         console.log(result);
-        this.router.navigate(['/sign-in']);;
+        this.router.navigate(['/sign-in']);
       })
   }
 

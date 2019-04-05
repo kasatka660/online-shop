@@ -1,8 +1,9 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from 'rxjs';
-import {ShopItem} from "./models/shop-item.model";
 import {map} from "rxjs/operators";
+
+import {ShopItem} from "../models/shop-item.model";
 
 
 @Injectable({

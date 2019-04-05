@@ -25,7 +25,7 @@ nav li a.nav-link:hover {
 }
 
 .shop-cart {
-  background-image: url('../../assets/images/cart.png');
+  background-image: url('../../../assets/images/cart.png');
   background-size: 30px;
   background-repeat: no-repeat;
   background-position: right;

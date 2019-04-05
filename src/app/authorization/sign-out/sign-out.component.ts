@@ -1,22 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import {SigningService} from "../signing.service";
+import { Component } from '@angular/core';
 import {Router} from "@angular/router";
-import {ShopService} from "../shop.service";
+
+import {SigningService} from "../../services/signing.service";
+import {ShopService} from "../../services/shop.service";
+
 
 @Component({
   selector: 'app-sign-out',
   templateUrl: './sign-out.component.html',
   styleUrls: ['./sign-out.component.css']
 })
-export class SignOutComponent implements OnInit {
+export class SignOutComponent {
 
   constructor( private signingService: SigningService,
                private shopService: ShopService,
                private router: Router) { }
-
-  ngOnInit() {
-
-  }
 
   signOut() {
     this.signingService.signOut();

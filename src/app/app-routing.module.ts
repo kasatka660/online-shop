@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule} from "@angular/router";
-import { HomeComponent } from "./home/home.component";
-import {CartComponent} from "./cart/cart.component";
-import {SignInComponent} from "./sign-in/sign-in.component";
-import {SignUpComponent} from "./sign-up/sign-up.component";
-import { SignOutComponent } from "./sign-out/sign-out.component";
+
+import { HomeComponent } from "./components/home/home.component";
+import {CartComponent} from "./components/cart/cart.component";
+
 
 @NgModule({
   declarations: [],
@@ -14,10 +13,7 @@ import { SignOutComponent } from "./sign-out/sign-out.component";
     RouterModule.forRoot([
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'home', component: HomeComponent},
-      {path: 'my-cart', component: CartComponent},
-      {path: 'sign-in', component: SignInComponent},
-      {path: 'sign-up', component: SignUpComponent},
-      {path: 'sign-out', component: SignOutComponent},
+      {path: 'my-cart', component: CartComponent}
     ])
   ],
   exports: [ RouterModule ]

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {SigningService} from "../signing.service";
-import {ShopService} from "../shop.service";
-import {subscribeOn} from "rxjs/operators";
+
+import {SigningService} from "../../services/signing.service";
+import {ShopService} from "../../services/shop.service";
+
 
 @Component({
   selector: 'app-header',

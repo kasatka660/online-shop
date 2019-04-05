@@ -10,7 +10,7 @@
           id="email"
           formControlName="email"
           placeholder="Your email">
-        <div *ngIf="signInForm.get('email').hasError('email') &&
+         <div *ngIf="signInForm.get('email').hasError('email') &&
                     signInForm.get('email').touched"
              class="alert alert-danger">
           Must be an e-mail.

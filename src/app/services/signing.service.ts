@@ -1,6 +1,6 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import { HttpClient, HttpHeaders} from "@angular/common/http";
-import { User } from "./models/user.model";
+import { User } from "../models/user.model";
 import { map } from "rxjs/operators";
 import { CookieService } from "ngx-cookie-service";
 import {ShopService} from "./shop.service";
