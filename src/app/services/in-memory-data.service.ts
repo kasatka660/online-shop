@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from "angular-in-memory-web-api";
 
+import { ShopItem } from "../models/shop-item.model";
+import { User } from "../models/user.model";
+
 @Injectable({
   providedIn: 'root'
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const shopItems = [
+    const shopItems: ShopItem[] = [
       { id: 1, name: 'Item number one', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-1.jpg",  price: 10, inStock: 10},
       { id: 2, name: 'Item number two', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-2.jpg", price: 20, inStock: 2},
       { id: 3, name: 'Item number three', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-3.jpg", price: 25, inStock: 5},
@@ -28,7 +31,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 19, name: 'Item number nineteen', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-3.jpg", price: 100, inStock: 10},
       { id: 20, name: 'Item number twenty', description: 'Lorem ipsum dolor sit amet', imgSrc: "assets/images/img-4.jpg", price: 120, inStock: 100},
     ];
-    const users = [
+    const users: User[] = [
       { id: 1, email: 'lenach241@gmail.com', password: '1234567'},
       { id: 2, email: 'test@test.com', password: 'test123'},
     ];

@@ -1,11 +1,14 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import { HttpClient, HttpHeaders} from "@angular/common/http";
-import { User } from "../models/user.model";
+import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { CookieService } from "ngx-cookie-service";
-import {ShopService} from "./shop.service";
 import {Router} from "@angular/router";
 
+import { CookieService } from "ngx-cookie-service";
+import {ShopService} from "./shop.service";
+
+
+import { User } from "../models/user.model";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -29,7 +32,7 @@ export class SigningService {
     return this.http.post<User>(this.usersUrl, user, httpOptions);
   }
 
-  checkUser(userToSearch: User) {
+  checkUser(userToSearch: User): Observable<boolean> {
     return this.http.get<User[]>(this.usersUrl)
       .pipe(
         map( item => {
@@ -49,7 +52,7 @@ export class SigningService {
     this.changeAuthorization();
   }
 
-  isAuthorised() {
+  isAuthorised(): boolean {
     return this.cookieService.get('userName').length > 0;
   }
 

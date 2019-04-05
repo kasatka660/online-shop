@@ -25,7 +25,7 @@ export class ShopService {
     return this.http.get<ShopItem>(url);
   }
 
-  getItemsByKeys(ids) {
+  getItemsByKeys(ids): Observable<ShopItem[]> {
     return this.getShopItems()
       .pipe(
         map(item => {
@@ -39,6 +39,7 @@ export class ShopService {
     const numberOfItems = Object.values(selectedItems).reduce( (prev, cur) =>  parseInt(prev) + parseInt(cur), 0  );
     this.cartChange.emit(numberOfItems)
   }
+  
   getEmittedValue() {
     return this.cartChange;
   }

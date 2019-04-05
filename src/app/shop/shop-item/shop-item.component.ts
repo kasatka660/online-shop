@@ -1,27 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
+import {Subscription} from "rxjs";
 
 import { ShopItem } from "../../models/shop-item.model";
 
 import { ShopService } from "../../services/shop.service";
 import {SigningService} from "../../services/signing.service";
 
+
 @Component({
   selector: 'app-shop-item',
   templateUrl: './shop-item.component.html',
   styleUrls: ['./shop-item.component.css']
 })
-export class ShopItemComponent implements OnInit {
+export class ShopItemComponent implements OnInit, OnDestroy {
   currentShopItem: ShopItem;
   quantity = 1;
   isAuthorised: boolean;
   buttonsDisabling: boolean;
+  subscriptions: Subscription = new Subscription();
 
   constructor( private shopService: ShopService,
                private currentRoute: ActivatedRoute,
                private signingService: SigningService,) { }
 
-  ngOnInit(): void {
+  ngOnInit()  {
     this.getShopItem();
     this.isAuthorised = this.signingService.isAuthorised();
     this.buttonsDisabling = !this.isAuthorised;
@@ -29,10 +32,11 @@ export class ShopItemComponent implements OnInit {
 
   getShopItem() {
     const id = +this.currentRoute.snapshot.paramMap.get('id');
-    this.shopService.getShopItem(id)
+    this.subscriptions.add(this.shopService.getShopItem(id)
       .subscribe(item => {
         this.currentShopItem = item;
-      });
+      })
+    );
   }
 
   addToCart() {
@@ -50,6 +54,10 @@ export class ShopItemComponent implements OnInit {
     } else {
       this.quantity -=1;
     }
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 
 }
