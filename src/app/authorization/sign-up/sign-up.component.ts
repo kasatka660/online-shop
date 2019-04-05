@@ -35,9 +35,9 @@ export class SignUpComponent implements OnInit {
 
   onSubmit(form) {
     this.signingService.createUser( {email: form.value.email, password: form.value.password} as User )
-      .subscribe( result => {
-        console.log(result);
-        this.router.navigate(['/sign-in']);
+      .subscribe( newUser  => {
+        this.signingService.authorizeUser(  newUser.email );
+        this.router.navigate(['/shop']);
       })
   }
 

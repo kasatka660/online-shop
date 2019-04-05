@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b41687c2-09b8-49e7-850e-46bad72eaf82" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/utils/password-match.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/authorization/sign-up/sign-up.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/authorization/sign-up/sign-up.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/utils/password-validation.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/signing.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/signing.service.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,8 +20,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/authorization/sign-up/sign-up.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="7" column="64" lean-forward="true" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
+            <state relative-caret-position="760">
+              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/services/signing.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="782">
+              <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+              <folding>
+                <element signature="e#0#63#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,7 +106,6 @@
         <option value="$PROJECT_DIR$/src/app/services/shop.service.ts" />
         <option value="$PROJECT_DIR$/src/app/app-routing.module.ts" />
         <option value="$PROJECT_DIR$/src/app/components/cart/cart.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/services/signing.service.ts" />
         <option value="$PROJECT_DIR$/src/app/components/header/header.component.css" />
         <option value="$PROJECT_DIR$/src/app/shop/shop/shop.component.ts" />
         <option value="$PROJECT_DIR$/src/app/shop/shop-item/shop-item.component.ts" />
@@ -101,6 +115,7 @@
         <option value="$PROJECT_DIR$/src/app/authorization/authorization-routing.module.ts" />
         <option value="$PROJECT_DIR$/src/app/authorization/authorization.module.ts" />
         <option value="$PROJECT_DIR$/src/app/utils/password-validation.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/signing.service.ts" />
         <option value="$PROJECT_DIR$/src/app/authorization/sign-up/sign-up.component.ts" />
       </list>
     </option>
@@ -152,6 +167,13 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="authorization" type="462c0819:PsiDirectoryNode" />
               <item name="sign-up" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="online-shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="online-shop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="online-shop" type="b2602c69:ProjectViewProjectNode" />
@@ -210,12 +232,12 @@
       <workItem from="1554389944981" duration="1984000" />
       <workItem from="1554403438305" duration="1295000" />
       <workItem from="1554451046579" duration="846000" />
-      <workItem from="1554452188229" duration="7148000" />
+      <workItem from="1554452188229" duration="9419000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="148370000" />
+    <option name="totallyTimeSpent" value="150641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -403,13 +425,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/signing.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="43" lean-forward="true" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/components/header/header.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -549,10 +564,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/signing.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/authorization/sign-up/sign-up.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="7" column="64" lean-forward="true" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
+        <state relative-caret-position="760">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

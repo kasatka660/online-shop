@@ -44,6 +44,11 @@ export class SigningService {
       )
   }
 
+  authorizeUser(email) {
+    this.cookieService.set( 'userName', email );
+    this.changeAuthorization();
+  }
+
   isAuthorised() {
     return this.cookieService.get('userName').length > 0;
   }
