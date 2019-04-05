@@ -29,8 +29,8 @@ export class SignInComponent implements OnInit, OnDestroy {
       });
   }
 
-  onSubmit(form) {
-    this.subscriptions.add(this.signingService.checkUser( {email: form.value.email, password: form.value.password} as User )
+  onSubmit() {
+    this.subscriptions.add(this.signingService.checkUser( {email: this.signInForm.value.email, password: this.signInForm.value.password} as User )
       .subscribe( result => {
           if ( result ) {
             this.router.navigate(['/shop']);

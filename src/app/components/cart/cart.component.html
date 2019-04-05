@@ -3,12 +3,9 @@
   <div class="col-2"></div>
 
   <div *ngIf="selectedItemsData.length > 0 " class="col-8">
-
       <div *ngFor="let item of selectedItemsData " [id]="item.id" class="card my-3">
-
           <div class="row my-3">
             <div class="col-md-4">
-
               <a routerLink="/shop-item/{{item.id}}">
                 <img [src]='item.imgSrc' class="card-img" alt="shop item">
               </a>
@@ -18,7 +15,6 @@
                 <a routerLink="/shop-item/{{item.id}}">
                   <h5 class="card-title"> {{item.name}} </h5>
                 </a>
-
                 <p class="card-text">
                   <span> ${{item.price}} </span>
                   <span>x</span>
@@ -35,11 +31,6 @@
             </div>
           </div>
       </div>
-      <div class="total">
-        <h3> Total amount : $ {{total}}  </h3>
-      </div>
-
-
   </div>
 
   <div *ngIf="selectedItemsData.length === 0 " class="col-8">
@@ -50,5 +41,11 @@
   </div>
 
   <div class="col-2"></div>
+
+  <div class="total row">
+    <div class="col-12">
+      <h3> Total amount : $ {{total}}  </h3>
+    </div>
+  </div>
 
 </div>

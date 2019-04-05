@@ -35,8 +35,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
       });
   }
 
-  onSubmit(form) {
-    this.subscriptions.add(this.signingService.createUser( {email: form.value.email, password: form.value.password} as User )
+  onSubmit() {
+    this.subscriptions.add(this.signingService.createUser( {email: this.signUpForm.value.email, password: this.signUpForm.value.password} as User )
       .subscribe( newUser  => {
         this.signingService.authorizeUser(  newUser.email );
         this.router.navigate(['/shop']);
