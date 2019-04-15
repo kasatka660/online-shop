@@ -1,9 +1,10 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {ShopItem} from '../models/shop-item.model';
+import {CartService} from './cart.service';
 
 
 @Injectable({
@@ -11,10 +12,14 @@ import {ShopItem} from '../models/shop-item.model';
 })
 export class ShopService {
 
+  subscriptions: Subscription = new Subscription();
+  selectedItems;
+
   private shopItemsUrl = 'api/shopItems';  // URL to web api
   @Output() cartChange: EventEmitter<any> = new EventEmitter();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private cartService: CartService) { }
 
   getShopItems(): Observable<ShopItem[]> {
     return this.http.get<ShopItem[]>(this.shopItemsUrl);
@@ -35,9 +40,14 @@ export class ShopService {
   }
 
   updateCart() {
-    const selectedItems = {...localStorage};
-    const numberOfItems = Object.values(selectedItems).reduce( (prev, cur) =>  parseInt(prev, 10) + parseInt(cur, 10), 0  );
-    this.cartChange.emit(numberOfItems);
+    // const selectedItems = {...localStorage};
+    this.subscriptions.add( this.cartService.getItems().subscribe( items => this.selectedItems = items ) );
+    if (this.selectedItems) {
+      const numberOfItems = this.selectedItems.quantity;
+      console.log(this.selectedItems);
+      this.cartChange.emit(numberOfItems);
+    }
+    // const numberOfItems = Object.values(this.selectedItems).reduce( (prev, cur) =>  parseInt(prev, 10) + parseInt(cur, 10), 0  );
   }
 
   getEmittedValue() {

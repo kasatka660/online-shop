@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 
 import {ShopService} from '../../services/shop.service';
+import {CartService} from '../../services/cart.service';
 
 import {CartItem} from '../../models/cart-item.model';
 
@@ -13,19 +14,32 @@ import {CartItem} from '../../models/cart-item.model';
 })
 export class CartComponent implements OnInit, OnDestroy {
 
-  constructor( private shopService: ShopService ) { }
-
-  selectedItems = {};
+  selectedItems;
   selectedItemsKeys: string[] ;
   selectedItemsData: CartItem[] = [] ;
   total = 0;
   subscriptions: Subscription = new Subscription();
 
-  ngOnInit() {
-    this.selectedItems = {...localStorage};
-    this.selectedItemsKeys = Object.keys(this.selectedItems);
+  constructor( private shopService: ShopService,
+               private cartService: CartService) {
+  }
 
-    this.subscriptions.add(this.shopService.getItemsByKeys(this.selectedItemsKeys)
+  ngOnInit() {
+
+   // this.selectedItems = {...localStorage};
+   // this.selectedItemsKeys = Object.keys(this.selectedItems);
+    this.subscriptions.add(this.cartService.getItems()
+      .subscribe( items =>  this.selectedItems = items )
+    );
+
+    console.log(this.selectedItems)
+    if (this.selectedItems) {
+      console.log(this.selectedItems);
+    }
+    // this.selectedItemsKeys = Object.keys(this.selectedItems);
+    // console.log(this.selectedItemsKeys);
+
+   /* this.subscriptions.add(this.shopService.getItemsByKeys(this.selectedItemsKeys)
       .subscribe( result => {
         this.selectedItemsData = result.map(item => {
             return Object.assign({quantity: +this.selectedItems[item.id]}, item);
@@ -33,6 +47,7 @@ export class CartComponent implements OnInit, OnDestroy {
         this.selectedItemsData.map( item => this.total += item.price * item.quantity );
       })
     );
+   */
   }
 
   removeFromCart(id) {

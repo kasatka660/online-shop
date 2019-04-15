@@ -11,7 +11,7 @@ import { ShopService } from '../../services/shop.service';
 })
 export class ShopComponent implements OnInit, OnDestroy {
   shopItems = [];
-  p: number = 1;
+  p = 1;
   subscriptions: Subscription = new Subscription();
 
   constructor(private shopService: ShopService) { }
