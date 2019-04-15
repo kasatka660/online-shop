@@ -1,9 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from "rxjs";
+import {Subscription} from 'rxjs';
 
-import {SigningService} from "../../services/signing.service";
-import {ShopService} from "../../services/shop.service";
-
+import {SigningService} from '../../services/signing.service';
+import {ShopService} from '../../services/shop.service';
 
 
 @Component({
@@ -17,7 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                private shopService: ShopService) { }
 
   isAuthorised: boolean;
-  numbOfItemsInCart: number = 0;
+  numbOfItemsInCart = 0;
   subscriptions: Subscription = new Subscription();
 
   ngOnInit() {

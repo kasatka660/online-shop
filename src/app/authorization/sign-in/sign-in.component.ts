@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import {Subscription} from "rxjs";
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
-import { SigningService } from "../../services/signing.service";
+import {SigningService} from '../../services/signing.service';
 
-import { User } from "../../models/user.model";
+import {User} from '../../models/user.model';
 
 
 @Component({
@@ -15,30 +15,38 @@ import { User } from "../../models/user.model";
 })
 export class SignInComponent implements OnInit, OnDestroy {
 
-  constructor ( private fb: FormBuilder,
-                private signingService: SigningService,
-                private router: Router) { }
+  constructor(private fb: FormBuilder,
+              private signingService: SigningService,
+              private router: Router) {
+  }
 
   signInForm: FormGroup;
   subscriptions: Subscription = new Subscription();
+  user: User;
 
   ngOnInit() {
-    this.signInForm =  this.fb.group({
-        email: ['', [Validators.required, Validators.email] ],
-        password: ['', [Validators.required, Validators.minLength(7)]],
-      });
+    this.signInForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(7)]],
+    });
   }
 
   onSubmit() {
-    this.subscriptions.add(this.signingService.checkUser( {email: this.signInForm.value.email, password: this.signInForm.value.password} as User )
-      .subscribe( result => {
-          if ( result ) {
+    // @ts-ignore
+    this.user = {
+      email: this.signInForm.value.email,
+      password: this.signInForm.value.password
+    };
+    this.subscriptions.add(
+      this.signingService.checkUser( this.user as User)
+        .subscribe(result => {
+          if (result) {
             this.router.navigate(['/shop']);
             this.signingService.changeAuthorization();
           } else {
             this.router.navigate(['/sign-in']);
           }
-      })
+        })
     );
   }
 

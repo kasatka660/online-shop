@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import {Subscription} from "rxjs";
+import { ActivatedRoute } from '@angular/router';
+import {Subscription} from 'rxjs';
 
-import { ShopItem } from "../../models/shop-item.model";
+import { ShopItem } from '../../models/shop-item.model';
 
-import { ShopService } from "../../services/shop.service";
-import {SigningService} from "../../services/signing.service";
+import { ShopService } from '../../services/shop.service';
+import {SigningService} from '../../services/signing.service';
 
 
 @Component({
@@ -22,7 +22,7 @@ export class ShopItemComponent implements OnInit, OnDestroy {
 
   constructor( private shopService: ShopService,
                private currentRoute: ActivatedRoute,
-               private signingService: SigningService,) { }
+               private signingService: SigningService, ) { }
 
   ngOnInit()  {
     this.getShopItem();
@@ -41,18 +41,20 @@ export class ShopItemComponent implements OnInit, OnDestroy {
 
   addToCart() {
     const prevQuantity = localStorage.getItem(`${this.currentShopItem.id}`);
-    localStorage.setItem( `${this.currentShopItem.id}`, `${ Number(prevQuantity) + this.quantity }`);
+    const id = `${this.currentShopItem.id}`;
+    const quantityAdded =  `${Number(prevQuantity) + this.quantity}`;
+    localStorage.setItem( id, quantityAdded);
     this.shopService.updateCart();
   }
 
   increase() {
-    this.quantity +=1;
+    this.quantity += 1;
   }
   decrease() {
     if (this.quantity === 1) {
       return;
     } else {
-      this.quantity -=1;
+      this.quantity -= 1;
     }
   }
 

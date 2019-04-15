@@ -1,9 +1,9 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {map} from "rxjs/operators";
+import {map} from 'rxjs/operators';
 
-import {ShopItem} from "../models/shop-item.model";
+import {ShopItem} from '../models/shop-item.model';
 
 
 @Injectable({
@@ -31,15 +31,15 @@ export class ShopService {
         map(item => {
           return item.filter(itemInfo => ids.includes(itemInfo.id.toString()));
         })
-      )
+      );
   }
 
   updateCart() {
     const selectedItems = {...localStorage};
-    const numberOfItems = Object.values(selectedItems).reduce( (prev, cur) =>  parseInt(prev) + parseInt(cur), 0  );
-    this.cartChange.emit(numberOfItems)
+    const numberOfItems = Object.values(selectedItems).reduce( (prev, cur) =>  parseInt(prev, 10) + parseInt(cur, 10), 0  );
+    this.cartChange.emit(numberOfItems);
   }
-  
+
   getEmittedValue() {
     return this.cartChange;
   }

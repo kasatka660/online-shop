@@ -4,5 +4,4 @@ export class ShopItem {
   description: string;
   imgSrc: string;
   price: number;
-  inStock: number;
 }

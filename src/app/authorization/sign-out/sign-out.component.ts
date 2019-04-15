@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
-import {SigningService} from "../../services/signing.service";
-import {ShopService} from "../../services/shop.service";
+import {SigningService} from '../../services/signing.service';
+import {ShopService} from '../../services/shop.service';
 
 
 @Component({

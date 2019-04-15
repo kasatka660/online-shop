@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { RouterModule} from "@angular/router";
+import { RouterModule} from '@angular/router';
 
-import {ShopComponent } from "./shop/shop.component";
-import { ShopItemComponent } from "./shop-item/shop-item.component";
+import {ShopComponent } from './shop/shop.component';
+import { ShopItemComponent } from './shop-item/shop-item.component';
 
 @NgModule({
   declarations: [],

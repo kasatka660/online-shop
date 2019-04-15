@@ -1,14 +1,14 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import { HttpClient, HttpHeaders} from "@angular/common/http";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import {Router} from "@angular/router";
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import {Router} from '@angular/router';
 
-import { CookieService } from "ngx-cookie-service";
-import {ShopService} from "./shop.service";
+import { CookieService } from 'ngx-cookie-service';
+import {ShopService} from './shop.service';
 
 
-import { User } from "../models/user.model";
+import { User } from '../models/user.model';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -37,14 +37,14 @@ export class SigningService {
       .pipe(
         map( item => {
           const userFound = item.find( user => user.email === userToSearch.email);
-          if ( typeof userFound == 'undefined' ) {
+          if ( typeof userFound === 'undefined' ) {
             return false;
           } else {
             this.cookieService.set( 'userName', `${userFound.email}` );
             return userFound.password === userToSearch.password;
           }
         })
-      )
+      );
   }
 
   authorizeUser(email) {
