@@ -14,7 +14,7 @@ import {CartItem} from '../../models/cart-item.model';
 })
 export class CartComponent implements OnInit, OnDestroy {
 
-  selectedItems;
+  selectedItems: {};
   selectedItemsKeys: string[] ;
   selectedItemsData: CartItem[] = [] ;
   total = 0;

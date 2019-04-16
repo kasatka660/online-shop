@@ -16,9 +16,9 @@ export class CartService {
     this.subject.next( this.cartItems  );
   }
 
-
   removeItem( id ) {
-    this.subject.next('');
+    delete this.cartItems[id];
+    this.subject.next(this.cartItems);
   }
 
   getItemQuantity( id ) {

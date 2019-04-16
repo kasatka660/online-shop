@@ -21,6 +21,7 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   signInForm: FormGroup;
+  private formSubmitAttempt: boolean;
   subscriptions: Subscription = new Subscription();
 
   ngOnInit() {
@@ -32,6 +33,10 @@ export class SignInComponent implements OnInit, OnDestroy {
 
   onSubmit() {
 
+    this.formSubmitAttempt = true;
+    if ( this.signInForm.valid ) {
+      console.log('form submitted');
+    }
     const user = {
       email: this.signInForm.value.email,
       password: this.signInForm.value.password
@@ -47,6 +52,11 @@ export class SignInComponent implements OnInit, OnDestroy {
           }
         })
     );
+  }
+
+  isFieldValid(field: string) {
+    return (!this.signInForm.get(field).valid && this.signInForm.get(field).touched) ||
+      (this.signInForm.get(field).untouched && this.formSubmitAttempt);
   }
 
   ngOnDestroy() {

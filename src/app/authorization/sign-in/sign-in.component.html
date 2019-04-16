@@ -10,8 +10,8 @@
           id="email"
           formControlName="email"
           placeholder="Your email">
-        <div *ngIf="signInForm.get('email').hasError('email') &&
-                    signInForm.get('email').touched"
+
+        <div *ngIf="!isFieldValid('email')"
              class="alert alert-danger">
           Must be an e-mail.
         </div>
@@ -25,8 +25,7 @@
           formControlName="password"
           placeholder="Your Password">
       </div>
-      <button type="submit" class="btn"
-              [disabled]="signInForm.invalid"> Sign in</button>
+      <button type="submit" class="btn"> Sign in</button>
     </form>
   </div>
   <div class="col-3"></div>

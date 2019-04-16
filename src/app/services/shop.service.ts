@@ -13,7 +13,7 @@ import {CartService} from './cart.service';
 export class ShopService {
 
   subscriptions: Subscription = new Subscription();
-  selectedItems;
+  selectedItems: {};
 
   private shopItemsUrl = 'api/shopItems';  // URL to web api
   @Output() cartChange: EventEmitter<any> = new EventEmitter();
@@ -42,8 +42,7 @@ export class ShopService {
   updateCart() {
     this.subscriptions.add( this.cartService.getItems().subscribe( items => this.selectedItems = items ) );
     if (this.selectedItems) {
-      console.log(this.selectedItems);
-      const numberOfItems = Object.values(this.selectedItems).reduce((prev, cur) =>  prev + cur, 0);
+      const numberOfItems = Object.values(this.selectedItems).reduce((prev: number, cur: number) =>  prev + cur, 0);
       this.cartChange.emit(numberOfItems);
     }
   }
