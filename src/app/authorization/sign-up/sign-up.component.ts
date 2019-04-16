@@ -37,7 +37,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-
     this.formSubmitAttempt = true;
     if ( this.signUpForm.valid ) {
       const user = {

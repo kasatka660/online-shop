@@ -33,7 +33,6 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-
     this.formSubmitAttempt = true;
     if ( this.signInForm.valid ) {
       const user = {
