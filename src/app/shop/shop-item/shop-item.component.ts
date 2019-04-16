@@ -42,13 +42,10 @@ export class ShopItemComponent implements OnInit, OnDestroy {
   }
 
   addToCart() {
-    // const prevQuantity = localStorage.getItem(`${this.currentShopItem.id}`);
+    const prevQuantity = this.cartService.getItemQuantity(`${this.currentShopItem.id}`) || 0;
     const id = this.currentShopItem.id.toString();
-   // const quantityAdded =  Number(prevQuantity) + this.quantity;
-    const quantityAdded = this.quantity;
-    console.log(id, quantityAdded);
+    const quantityAdded =  Number(prevQuantity) + this.quantity;
     this.cartService.addItem( id, quantityAdded );
-    // localStorage.setItem( id, quantityAdded);
     this.shopService.updateCart();
   }
 

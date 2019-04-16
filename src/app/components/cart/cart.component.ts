@@ -25,33 +25,24 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
-   // this.selectedItems = {...localStorage};
-   // this.selectedItemsKeys = Object.keys(this.selectedItems);
     this.subscriptions.add(this.cartService.getItems()
       .subscribe( items =>  this.selectedItems = items )
     );
-
-    console.log(this.selectedItems)
     if (this.selectedItems) {
-      console.log(this.selectedItems);
-    }
-    // this.selectedItemsKeys = Object.keys(this.selectedItems);
-    // console.log(this.selectedItemsKeys);
-
-   /* this.subscriptions.add(this.shopService.getItemsByKeys(this.selectedItemsKeys)
-      .subscribe( result => {
-        this.selectedItemsData = result.map(item => {
+      this.selectedItemsKeys = Object.keys(this.selectedItems);
+      this.subscriptions.add(this.shopService.getItemsByKeys(this.selectedItemsKeys)
+        .subscribe( result => {
+          this.selectedItemsData = result.map(item => {
             return Object.assign({quantity: +this.selectedItems[item.id]}, item);
           });
-        this.selectedItemsData.map( item => this.total += item.price * item.quantity );
-      })
-    );
-   */
+          this.selectedItemsData.map( item => this.total += item.price * item.quantity );
+        })
+      );
+    }
   }
 
   removeFromCart(id) {
-    localStorage.removeItem(id);
+    this.cartService.removeItem(id);
     this.shopService.updateCart();
     const index = this.selectedItemsData.findIndex( item => item.id = id );
     this.selectedItemsData.splice(index, 1).map(item => this.total -= item.price * item.quantity);

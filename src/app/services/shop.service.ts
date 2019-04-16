@@ -40,14 +40,12 @@ export class ShopService {
   }
 
   updateCart() {
-    // const selectedItems = {...localStorage};
     this.subscriptions.add( this.cartService.getItems().subscribe( items => this.selectedItems = items ) );
     if (this.selectedItems) {
-      const numberOfItems = this.selectedItems.quantity;
       console.log(this.selectedItems);
+      const numberOfItems = Object.values(this.selectedItems).reduce((prev, cur) =>  prev + cur, 0);
       this.cartChange.emit(numberOfItems);
     }
-    // const numberOfItems = Object.values(this.selectedItems).reduce( (prev, cur) =>  parseInt(prev, 10) + parseInt(cur, 10), 0  );
   }
 
   getEmittedValue() {

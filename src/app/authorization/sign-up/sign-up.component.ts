@@ -23,7 +23,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   signUpForm: FormGroup;
   subscriptions: Subscription = new Subscription();
-  user: User;
 
   ngOnInit() {
     this.signUpForm = this.fb.group({
@@ -37,12 +36,11 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    // @ts-ignore
-    this.user = {
+    const user = {
       email: this.signUpForm.value.email,
       password: this.signUpForm.value.password
     };
-    this.subscriptions.add(this.signingService.createUser(this.user as User)
+    this.subscriptions.add(this.signingService.createUser( user as User )
         .subscribe(newUser => {
           this.signingService.authorizeUser(newUser.email);
           this.router.navigate(['/shop']);
