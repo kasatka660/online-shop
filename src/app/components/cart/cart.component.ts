@@ -5,6 +5,7 @@ import {ShopService} from '../../services/shop.service';
 import {CartService} from '../../services/cart.service';
 
 import {CartItem} from '../../models/cart-item.model';
+import { SelectedItem } from '../../models/selected-item.model';
 
 
 @Component({
@@ -14,9 +15,9 @@ import {CartItem} from '../../models/cart-item.model';
 })
 export class CartComponent implements OnInit, OnDestroy {
 
-  selectedItems: [];
-  selectedItemsKeys: string[] = [] ;
-  selectedItemsData: CartItem[] = [] ;
+  selectedItems: SelectedItem[];
+  selectedItemsKeys: number[] = [] ;
+  selectedItemsData: CartItem[] = [];
   total = 0;
   subscriptions: Subscription = new Subscription();
 
@@ -29,16 +30,12 @@ export class CartComponent implements OnInit, OnDestroy {
       .subscribe( items =>  this.selectedItems = items )
     );
     if (this.selectedItems) {
-      console.log(this.selectedItems)
-      this.selectedItems.map( item => this.selectedItemsKeys.push(item.id) );
-      console.log(this.selectedItemsKeys);
+      this.selectedItems.map( (item: SelectedItem) => this.selectedItemsKeys.push(item.id) );
       this.subscriptions.add(this.shopService.getItemsByKeys(this.selectedItemsKeys)
         .subscribe( result => {
           this.selectedItemsData = result.map(item => {
-            console.log(item);
-            console.log( Object.assign( { quantity: this.selectedItems.filter( a => a.id === item.id ) } ) )
-           // return item;
-            // return Object.assign({quantity: +this.selectedItems[item.id]}, item);
+            const quantity = this.selectedItems.filter(a => a.id === item.id)[0].quantity;
+            return Object.assign(  { quantity }, item );
           });
           this.selectedItemsData.map( item => this.total += item.price * item.quantity );
         })
@@ -49,7 +46,7 @@ export class CartComponent implements OnInit, OnDestroy {
   removeFromCart(id) {
     this.cartService.removeItem(id);
     this.shopService.updateCart();
-    const index = this.selectedItemsData.findIndex( item => item.id = id );
+    const index = this.selectedItemsData.findIndex( item => item.id === id );
     this.selectedItemsData.splice(index, 1).map(item => this.total -= item.price * item.quantity);
   }
 

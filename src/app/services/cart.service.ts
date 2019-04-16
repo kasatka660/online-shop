@@ -8,22 +8,22 @@ export class CartService {
 
   private subject: BehaviorSubject<any> = new BehaviorSubject([]);
 
-  private cartItems = {};
-
-
-  addItem( id, quantity) {
-    const arr = this.subject.getValue();
-   // const newItem = {};
-    // newItem[id] = quantity;
-    arr.push( { id, quantity } );
-    this.subject.next( arr ) ;
-    // this.cartItems[id] = quantity;
-    // this.subject.next( this.cartItems  );
+  addItem( id, quantity ) {
+    const tempStorage = this.subject.getValue();
+    const index = tempStorage.findIndex( item => item.id === id );
+    if ( index >= 0 ) {
+      tempStorage[index].quantity += quantity;
+    } else {
+      tempStorage.push( { id, quantity } );
+    }
+    this.subject.next( tempStorage ) ;
   }
 
   removeItem( id ) {
-    delete this.cartItems[id];
-    this.subject.next(this.cartItems);
+    const tempStorage = this.subject.getValue();
+    const index = tempStorage.findIndex( item => item.id === id) ;
+    tempStorage.splice(index, 1);
+    this.subject.next( tempStorage );
   }
 
   getItemQuantity( id ) {

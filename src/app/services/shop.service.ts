@@ -5,6 +5,7 @@ import {map} from 'rxjs/operators';
 
 import {ShopItem} from '../models/shop-item.model';
 import {CartService} from './cart.service';
+import {SelectedItem} from '../models/selected-item.model';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ import {CartService} from './cart.service';
 export class ShopService {
 
   subscriptions: Subscription = new Subscription();
-  selectedItems: {};
+  selectedItems: SelectedItem[];
 
   private shopItemsUrl = 'api/shopItems';  // URL to web api
   @Output() cartChange: EventEmitter<any> = new EventEmitter();
@@ -34,16 +35,15 @@ export class ShopService {
     return this.getShopItems()
       .pipe(
         map(item => {
-          return item.filter(itemInfo => ids.includes(itemInfo.id.toString()));
+          return item.filter(itemInfo => ids.includes(itemInfo.id));
         })
       );
   }
 
   updateCart() {
     this.subscriptions.add( this.cartService.getItems().subscribe( items => this.selectedItems = items ) );
-    console.log(this.selectedItems);
     if (this.selectedItems) {
-      const numberOfItems = Object.values(this.selectedItems).reduce((prev: number, cur: number) =>  prev + cur, 0);
+      const numberOfItems = this.selectedItems.reduce(( prev, cur ) => prev + cur.quantity, 0);
       this.cartChange.emit(numberOfItems);
     }
   }
