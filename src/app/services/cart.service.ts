@@ -12,8 +12,13 @@ export class CartService {
 
 
   addItem( id, quantity) {
-    this.cartItems[id] = quantity;
-    this.subject.next( this.cartItems  );
+    const arr = this.subject.getValue();
+   // const newItem = {};
+    // newItem[id] = quantity;
+    arr.push( { id, quantity } );
+    this.subject.next( arr ) ;
+    // this.cartItems[id] = quantity;
+    // this.subject.next( this.cartItems  );
   }
 
   removeItem( id ) {

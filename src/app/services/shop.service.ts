@@ -41,6 +41,7 @@ export class ShopService {
 
   updateCart() {
     this.subscriptions.add( this.cartService.getItems().subscribe( items => this.selectedItems = items ) );
+    console.log(this.selectedItems);
     if (this.selectedItems) {
       const numberOfItems = Object.values(this.selectedItems).reduce((prev: number, cur: number) =>  prev + cur, 0);
       this.cartChange.emit(numberOfItems);

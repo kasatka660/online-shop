@@ -14,8 +14,8 @@ import {CartItem} from '../../models/cart-item.model';
 })
 export class CartComponent implements OnInit, OnDestroy {
 
-  selectedItems: {};
-  selectedItemsKeys: string[] ;
+  selectedItems: [];
+  selectedItemsKeys: string[] = [] ;
   selectedItemsData: CartItem[] = [] ;
   total = 0;
   subscriptions: Subscription = new Subscription();
@@ -29,11 +29,16 @@ export class CartComponent implements OnInit, OnDestroy {
       .subscribe( items =>  this.selectedItems = items )
     );
     if (this.selectedItems) {
-      this.selectedItemsKeys = Object.keys(this.selectedItems);
+      console.log(this.selectedItems)
+      this.selectedItems.map( item => this.selectedItemsKeys.push(item.id) );
+      console.log(this.selectedItemsKeys);
       this.subscriptions.add(this.shopService.getItemsByKeys(this.selectedItemsKeys)
         .subscribe( result => {
           this.selectedItemsData = result.map(item => {
-            return Object.assign({quantity: +this.selectedItems[item.id]}, item);
+            console.log(item);
+            console.log( Object.assign( { quantity: this.selectedItems.filter( a => a.id === item.id ) } ) )
+           // return item;
+            // return Object.assign({quantity: +this.selectedItems[item.id]}, item);
           });
           this.selectedItemsData.map( item => this.total += item.price * item.quantity );
         })
