@@ -11,7 +11,7 @@
           formControlName="email"
           placeholder="Your email">
 
-        <div *ngIf="!isFieldValid('email')"
+        <div *ngIf="isFieldValid('email')"
              class="alert alert-danger">
           Must be an e-mail.
         </div>
@@ -26,6 +26,10 @@
           placeholder="Your Password">
       </div>
       <button type="submit" class="btn"> Sign in</button>
+      <div *ngIf="userExists === false"
+           class="alert alert-danger">
+        Wrong email or password.
+      </div>
     </form>
   </div>
   <div class="col-3"></div>

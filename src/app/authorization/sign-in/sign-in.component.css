@@ -10,3 +10,8 @@ input.ng-valid {
 input.ng-invalid {
   border-bottom: 2px solid red;
 }
+
+.alert {
+  max-width: 400px;
+  margin-top: 10px;
+}

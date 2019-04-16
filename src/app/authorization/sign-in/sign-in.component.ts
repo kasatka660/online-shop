@@ -21,7 +21,8 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   signInForm: FormGroup;
-  private formSubmitAttempt: boolean;
+  private formSubmitAttempt = false;
+  userExists: boolean;
   subscriptions: Subscription = new Subscription();
 
   ngOnInit() {
@@ -35,27 +36,27 @@ export class SignInComponent implements OnInit, OnDestroy {
 
     this.formSubmitAttempt = true;
     if ( this.signInForm.valid ) {
-      console.log('form submitted');
+      const user = {
+        email: this.signInForm.value.email,
+        password: this.signInForm.value.password
+      };
+      this.subscriptions.add(
+        this.signingService.checkUser( user as User )
+          .subscribe(result => {
+            if (result) {
+              this.router.navigate(['/shop']);
+              this.signingService.changeAuthorization();
+            } else {
+              this.router.navigate(['/sign-in']);
+              this.userExists = false;
+            }
+          })
+      );
     }
-    const user = {
-      email: this.signInForm.value.email,
-      password: this.signInForm.value.password
-    };
-    this.subscriptions.add(
-      this.signingService.checkUser( user as User )
-        .subscribe(result => {
-          if (result) {
-            this.router.navigate(['/shop']);
-            this.signingService.changeAuthorization();
-          } else {
-            this.router.navigate(['/sign-in']);
-          }
-        })
-    );
   }
 
   isFieldValid(field: string) {
-    return (!this.signInForm.get(field).valid && this.signInForm.get(field).touched) ||
+    return (!this.signInForm.get(field).valid && this.signInForm.get(field).touched && this.formSubmitAttempt) ||
       (this.signInForm.get(field).untouched && this.formSubmitAttempt);
   }
 

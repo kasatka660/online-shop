@@ -22,6 +22,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   signUpForm: FormGroup;
+  private formSubmitAttempt = false;
   subscriptions: Subscription = new Subscription();
 
   ngOnInit() {
@@ -36,16 +37,25 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    const user = {
-      email: this.signUpForm.value.email,
-      password: this.signUpForm.value.password
-    };
-    this.subscriptions.add(this.signingService.createUser( user as User )
+
+    this.formSubmitAttempt = true;
+    if ( this.signUpForm.valid ) {
+      const user = {
+        email: this.signUpForm.value.email,
+        password: this.signUpForm.value.password
+      };
+      this.subscriptions.add(this.signingService.createUser(user as User)
         .subscribe(newUser => {
           this.signingService.authorizeUser(newUser.email);
           this.router.navigate(['/shop']);
         })
-    );
+      );
+    }
+  }
+
+  isFieldValid(field: string) {
+    return (!this.signUpForm.get(field).valid && this.signUpForm.get(field).touched && this.formSubmitAttempt) ||
+      (this.signUpForm.get(field).untouched && this.formSubmitAttempt);
   }
 
   ngOnDestroy() {
